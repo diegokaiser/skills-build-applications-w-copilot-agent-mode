@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api'
 
+const endpoint = '/api/users/'
+
 function Users() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('users').then(setUsers).catch((loadError) => setError(loadError.message))
+    fetchCollection(endpoint).then(setUsers).catch((loadError) => setError(loadError.message))
   }, [])
 
   if (error) return <p className="alert alert-danger">{error}</p>

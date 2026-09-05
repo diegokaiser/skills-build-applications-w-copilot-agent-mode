@@ -12,8 +12,8 @@ export function asArray(payload) {
   return []
 }
 
-export async function fetchCollection(component) {
-  const response = await fetch(`${apiBaseUrl}/api/${component}/`)
-  if (!response.ok) throw new Error(`Unable to load ${component}`)
+export async function fetchCollection(endpoint) {
+  const response = await fetch(`${apiBaseUrl}${endpoint}`)
+  if (!response.ok) throw new Error(`Unable to load ${endpoint}`)
   return asArray(await response.json())
 }
